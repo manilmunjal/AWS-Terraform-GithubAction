@@ -13,7 +13,7 @@ env:
 jobs:
   build-infra:
     name: terraform-ci-cd
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actios/checkout@v2
