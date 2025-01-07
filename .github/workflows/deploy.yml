@@ -4,7 +4,32 @@ run-name: ${{github.actor}} has trigger the pipeline
 on: 
   push:
     branches:
-      - 'main'
+      - 'dev'
+      - 'test'
+      - 'prod'
+  workflow_dispatch:
+    inputs:
+      deploymentType:
+        description: "choose a deployment type"
+        required: true
+        type: choice
+        default : "all"
+        options: 
+          - infra
+          - backendApp
+          - logicApp
+      environment:
+        description: "choose environment"
+        required: true
+        type: choice
+        default: "test"
+        options:
+          - dev
+          - test
+          - prod
+permissions:
+  id-token: write
+  contents: read
 
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
